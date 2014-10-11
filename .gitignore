@@ -4,6 +4,9 @@ node_modules
 bower_components
 .codio
 test
-.travis
-package
+.travis.yml
+package.json
 https:
+.bowerrc
+.gitignore
+.jshintrc
