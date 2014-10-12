@@ -28,12 +28,10 @@ angular.module('myApp', ['photosphere']);
 ```    
 ##Advices
 
+* You can now put several photospheres on the same webpage ! 
+
 * Big resolutions values can have effects on the performances.
 * Don't use too heavy pictures (like 10 Mo), people don't like to wait...
-
-##Known bugs
-
-* Issue with the controls when there are two photospheres on the same page. I'm trying to correct it soon.
 
 ##Coming Soon
 * Headtracking control (with webcam)
