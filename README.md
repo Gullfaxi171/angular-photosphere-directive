@@ -3,20 +3,21 @@
 ##Getting started :
 
 Import three.js and photosphere.min.js
-
-    <script src="//ajax.googleapis.com/ajax/libs/threejs/r67/three.min.js"></script>
-    <script src="libs/photosphere.min.js"></script>
+```html
+<script src="//ajax.googleapis.com/ajax/libs/threejs/r67/three.min.js"></script>
+<script src="libs/photosphere.min.js"></script>
+```
 
 Add the 'photosphere' module to your app
-
-    angular.module('myApp', ['photosphere']);
-
+```javascript
+angular.module('myApp', ['photosphere']);
+```
 ##Use :
-
-    <photosphere src="path/img.jpg"></photosphere>
-    
+```html
+<photosphere src="path/img.jpg"></photosphere>
+```
 ##Optionnal attributes :
-
+```html
     <photosphere src="path/img.jpg"
                  width="1024"               // Default is 640
                  height="768"               // Default is 480
@@ -24,7 +25,7 @@ Add the 'photosphere' module to your app
                  resolution="40"            // Number of division of the sphere on which is mapped the picture. Default is 30. Has to be between 10 and 80.
                  controls="all">            // Can be 'all', 'wheel', 'pointer' or 'none'. Default is 'all'
     </photosphere>
-    
+```    
 ##Advices
 
 * Big resolutions values can have effects on the performances.
