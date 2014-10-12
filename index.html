@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Angular-photosphere-directive by Gullfaxi171</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Angular-photosphere-directive</h1>
+        <p>An AngularJS directive to display photospheres in websites</p>
+
+        <p class="view"><a href="https://github.com/Gullfaxi171/angular-photosphere-directive">View the Project on GitHub <small>Gullfaxi171/angular-photosphere-directive</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/Gullfaxi171/angular-photosphere-directive/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/Gullfaxi171/angular-photosphere-directive/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/Gullfaxi171/angular-photosphere-directive">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="photosphere-directive-for-angularjs" class="anchor" href="#photosphere-directive-for-angularjs"><span class="octicon octicon-link"></span></a>Photosphere directive for Angular.js</h1>
+
+<h2>
+<a name="getting-started-" class="anchor" href="#getting-started-"><span class="octicon octicon-link"></span></a>Getting started :</h2>
+
+<p>Import three.js and photosphere.min.js</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"//ajax.googleapis.com/ajax/libs/threejs/r67/three.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/photosphere.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<p>Add the 'photosphere' module to your app</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'photosphere'</span><span class="p">]);</span>
+</pre></div>
+
+<h2>
+<a name="use-" class="anchor" href="#use-"><span class="octicon octicon-link"></span></a>Use :</h2>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;photosphere</span> <span class="na">src=</span><span class="s">"path/img.jpg"</span><span class="nt">&gt;&lt;/photosphere&gt;</span>
+</pre></div>
+
+<h2>
+<a name="optionnal-attributes-" class="anchor" href="#optionnal-attributes-"><span class="octicon octicon-link"></span></a>Optionnal attributes :</h2>
+
+<div class="highlight highlight-html"><pre>    <span class="nt">&lt;photosphere</span> <span class="na">src=</span><span class="s">"path/img.jpg"</span>
+                 <span class="na">width=</span><span class="s">"1024"</span>               <span class="err">//</span> <span class="na">Default</span> <span class="na">is</span> <span class="na">640</span>
+                 <span class="na">height=</span><span class="s">"768"</span>               <span class="err">//</span> <span class="na">Default</span> <span class="na">is</span> <span class="na">480</span>
+                 <span class="na">speed=</span><span class="s">"10"</span>                 <span class="err">//</span> <span class="na">Initial</span> <span class="na">rotation</span> <span class="na">speed</span><span class="err">.</span> <span class="na">Default</span> <span class="na">is</span> <span class="na">0</span><span class="err">.</span> <span class="na">Has</span> <span class="na">to</span> <span class="na">be</span> <span class="na">between</span> <span class="na">0</span> <span class="na">and</span> <span class="na">20</span>
+                 <span class="na">resolution=</span><span class="s">"40"</span>            <span class="err">//</span> <span class="na">Number</span> <span class="na">of</span> <span class="na">division</span> <span class="na">of</span> <span class="na">the</span> <span class="na">sphere</span> <span class="na">on</span> <span class="na">which</span> <span class="na">is</span> <span class="na">mapped</span> <span class="na">the</span> <span class="na">picture</span><span class="err">.</span> <span class="na">Default</span> <span class="na">is</span> <span class="na">30</span><span class="err">.</span> <span class="na">Has</span> <span class="na">to</span> <span class="na">be</span> <span class="na">between</span> <span class="na">10</span> <span class="na">and</span> <span class="na">80</span><span class="err">.</span>
+                 <span class="na">controls=</span><span class="s">"all"</span><span class="nt">&gt;</span>            // Can be 'all', 'wheel', 'pointer' or 'none'. Default is 'all'
+    <span class="nt">&lt;/photosphere&gt;</span>
+</pre></div>
+
+<h2>
+<a name="advices" class="anchor" href="#advices"><span class="octicon octicon-link"></span></a>Advices</h2>
+
+<ul>
+<li>Big resolutions values can have effects on the performances.</li>
+<li>Don't use too heavy pictures (like 10 Mo), people don't like to wait...</li>
+</ul>
+
+<h2>
+<a name="known-bugs" class="anchor" href="#known-bugs"><span class="octicon octicon-link"></span></a>Known bugs</h2>
+
+<ul>
+<li>Issue with the controls when there are two photospheres on the same page. I'm trying to correct it soon.</li>
+</ul>
+
+<h2>
+<a name="coming-soon" class="anchor" href="#coming-soon"><span class="octicon octicon-link"></span></a>Coming Soon</h2>
+
+<ul>
+<li>Headtracking control (with webcam)</li>
+<li>LeapMotion control</li>
+<li>Better reaction to resize</li>
+<li>Fullscreen mode</li>
+<li>Setting the fov of the camera</li>
+<li>Fisheye view</li>
+</ul>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/Gullfaxi171">Gullfaxi171</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
