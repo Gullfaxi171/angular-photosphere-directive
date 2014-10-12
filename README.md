@@ -2,8 +2,9 @@
 
 ##Getting started :
 
-Import three.js and photosphere.min.js
+Import Angular, three.js and photosphere.min.js
 ```html
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.5/angular.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/threejs/r67/three.min.js"></script>
 <script src="libs/photosphere.min.js"></script>
 ```
@@ -16,6 +17,9 @@ angular.module('myApp', ['photosphere']);
 ```html
 <photosphere src="path/img.jpg"></photosphere>
 ```
+##Compatibility :
+Tested on Chrome 37, Firefox 35, IE 11
+
 ##Optionnal attributes :
 ```html
     <photosphere src="path/img.jpg"
@@ -28,17 +32,19 @@ angular.module('myApp', ['photosphere']);
 ```    
 ##Advices
 
-* You can now put several photospheres on the same webpage ! 
-
+* You can now put several photospheres on the same webpage !
+* Working on smartphones/tablets
 * Big resolutions values can have effects on the performances.
 * Don't use too heavy pictures (like 10 Mo), people don't like to wait...
 
 ##Coming Soon
+* Async load of the pictures
 * Headtracking control (with webcam)
 * LeapMotion control
 * Better reaction to resize
-* Fullscreen mode
 * Setting the fov of the camera
 * Fisheye view
 
 ##License
+
+MIT License
