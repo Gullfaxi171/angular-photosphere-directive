@@ -81,7 +81,7 @@ photosphere.directive('photosphere', ['$window',
                 
                 var geometry = new THREE.SphereGeometry(100, res, res);
                 
-                var currentMesh = null;
+                //var currentMesh = null;
                 
                 var mesh = new THREE.MeshBasicMaterial({
                     map: THREE.ImageUtils.loadTexture(attrs.src)
@@ -91,7 +91,8 @@ photosphere.directive('photosphere', ['$window',
                 sphere.scale.x = -1;
                 scene.add(sphere);
                 
-                var controls = new THREE.OrbitControls(camera);
+                console.log(webglEl);
+                var controls = new THREE.OrbitControls(camera, webglEl);
                 
                 if(ctrls === 'wheel' || ctrls === 'none') {
                     controls.enabled = false;

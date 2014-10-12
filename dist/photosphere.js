@@ -81,7 +81,7 @@ photosphere.directive('photosphere', ['$window',
                 
                 var geometry = new THREE.SphereGeometry(100, res, res);
                 
-                var currentMesh = null;
+                //var currentMesh = null;
                 
                 var mesh = new THREE.MeshBasicMaterial({
                     map: THREE.ImageUtils.loadTexture(attrs.src)
@@ -91,7 +91,8 @@ photosphere.directive('photosphere', ['$window',
                 sphere.scale.x = -1;
                 scene.add(sphere);
                 
-                var controls = new THREE.OrbitControls(camera);
+                console.log(webglEl);
+                var controls = new THREE.OrbitControls(camera, webglEl);
                 
                 if(ctrls === 'wheel' || ctrls === 'none') {
                     controls.enabled = false;
@@ -178,6 +179,8 @@ photosphere.directive('photosphere', ['$window',
 //      controls.target.z = 150;
 // Simple substitute "OrbitControls" and the control should work as-is.
 
+
+// Gullfaxi fix : replace element by element[0] to work with angular EVERYWHERE
 THREE.OrbitControls = function ( object, domElement ) {
 
 	this.object = object;
@@ -325,15 +328,18 @@ THREE.OrbitControls = function ( object, domElement ) {
 
 			// half of the fov is center to top of screen
 			targetDistance *= Math.tan( (scope.object.fov/2) * Math.PI / 180.0 );
+            
+            
+        
 			// we actually don't use screenWidth, since perspective camera is fixed to screen height
-			scope.panLeft( 2 * delta.x * targetDistance / element.clientHeight );
-			scope.panUp( 2 * delta.y * targetDistance / element.clientHeight );
+			scope.panLeft( 2 * delta.x * targetDistance / element[0].clientHeight );
+			scope.panUp( 2 * delta.y * targetDistance / element[0].clientHeight );
 
 		} else if ( scope.object.top !== undefined ) {
 
 			// orthographic
-			scope.panLeft( delta.x * (scope.object.right - scope.object.left) / element.clientWidth );
-			scope.panUp( delta.y * (scope.object.top - scope.object.bottom) / element.clientHeight );
+			scope.panLeft( delta.x * (scope.object.right - scope.object.left) / element[0].clientWidth );
+			scope.panUp( delta.y * (scope.object.top - scope.object.bottom) / element[0].clientHeight );
 
 		} else {
 
@@ -489,8 +495,9 @@ THREE.OrbitControls = function ( object, domElement ) {
 		}
 
 		// Greggman fix: https://github.com/greggman/three.js/commit/fde9f9917d6d8381f06bf22cdff766029d1761be
-		scope.domElement.addEventListener( 'mousemove', onMouseMove, false );
-		scope.domElement.addEventListener( 'mouseup', onMouseUp, false );
+        // Gullfaxi fix : replace addElementListener by bind() to work with angular
+		scope.domElement.bind( 'mousemove', onMouseMove);
+		scope.domElement.bind( 'mouseup', onMouseUp);
 
 	}
 
@@ -510,9 +517,9 @@ THREE.OrbitControls = function ( object, domElement ) {
 			rotateDelta.subVectors( rotateEnd, rotateStart );
 
 			// rotating across whole screen goes 360 degrees around
-			scope.rotateLeft( 2 * Math.PI * rotateDelta.x / element.clientWidth * scope.rotateSpeed );
+			scope.rotateLeft( 2 * Math.PI * rotateDelta.x / element[0].clientWidth * scope.rotateSpeed );
 			// rotating up and down along whole screen attempts to go 360, but limited to 180
-			scope.rotateUp( 2 * Math.PI * rotateDelta.y / element.clientHeight * scope.rotateSpeed );
+			scope.rotateUp( 2 * Math.PI * rotateDelta.y / element[0].clientHeight * scope.rotateSpeed );
 
 			rotateStart.copy( rotateEnd );
 
@@ -561,8 +568,9 @@ THREE.OrbitControls = function ( object, domElement ) {
 		if ( scope.enabled === false ) return;
 
 		// Greggman fix: https://github.com/greggman/three.js/commit/fde9f9917d6d8381f06bf22cdff766029d1761be
-		scope.domElement.removeEventListener( 'mousemove', onMouseMove, false );
-		scope.domElement.removeEventListener( 'mouseup', onMouseUp, false );
+        // Gullfaxi fix : replace removeElementListener by unbind() to work with angular
+		scope.domElement.unbind('mousemove');
+		scope.domElement.unbind('mouseup');
 
 		state = STATE.NONE;
 
@@ -696,9 +704,9 @@ THREE.OrbitControls = function ( object, domElement ) {
 				rotateDelta.subVectors( rotateEnd, rotateStart );
 
 				// rotating across whole screen goes 360 degrees around
-				scope.rotateLeft( 2 * Math.PI * rotateDelta.x / element.clientWidth * scope.rotateSpeed );
+				scope.rotateLeft( 2 * Math.PI * rotateDelta.x / element[0].clientWidth * scope.rotateSpeed );
 				// rotating up and down along whole screen attempts to go 360, but limited to 180
-				scope.rotateUp( 2 * Math.PI * rotateDelta.y / element.clientHeight * scope.rotateSpeed );
+				scope.rotateUp( 2 * Math.PI * rotateDelta.y / element[0].clientHeight * scope.rotateSpeed );
 
 				rotateStart.copy( rotateEnd );
 				break;
@@ -756,16 +764,17 @@ THREE.OrbitControls = function ( object, domElement ) {
 		state = STATE.NONE;
 	}
 
-	this.domElement.addEventListener( 'contextmenu', function ( event ) { event.preventDefault(); }, false );
-	this.domElement.addEventListener( 'mousedown', onMouseDown, false );
-	this.domElement.addEventListener( 'mousewheel', onMouseWheel, false );
-	this.domElement.addEventListener( 'DOMMouseScroll', onMouseWheel, false ); // firefox
+        // Gullfaxi fix : replace addElementListener by bind() to work with angular
+	this.domElement.bind( 'contextmenu', function ( event ) { event.preventDefault(); });
+	this.domElement.bind( 'mousedown', onMouseDown);
+	this.domElement.bind( 'mousewheel', onMouseWheel);
+	this.domElement.bind( 'DOMMouseScroll', onMouseWheel); // firefox
 
-	this.domElement.addEventListener( 'keydown', onKeyDown, false );
+	this.domElement.bind( 'keydown', onKeyDown);
 
-	this.domElement.addEventListener( 'touchstart', touchstart, false );
-	this.domElement.addEventListener( 'touchend', touchend, false );
-	this.domElement.addEventListener( 'touchmove', touchmove, false );
+	this.domElement.bind( 'touchstart', touchstart);
+	this.domElement.bind( 'touchend', touchend);
+	this.domElement.bind( 'touchmove', touchmove);
 
 };
 
