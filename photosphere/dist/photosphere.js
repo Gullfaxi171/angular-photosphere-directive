@@ -88,7 +88,10 @@ photosphere.directive('photosphere', ['$window',
                 var geometry = new THREE.SphereGeometry(100, res, res);
                 
                 //var currentMesh = null;
-                
+
+                // enabling cross-origin
+                THREE.ImageUtils.crossOrigin = 'use-credential';
+
                 var mesh = new THREE.MeshBasicMaterial({
                     map: THREE.ImageUtils.loadTexture(attrs.src)
                 });
