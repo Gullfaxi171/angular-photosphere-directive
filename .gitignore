@@ -1,7 +1,0 @@
-.codio
-.*
-.tmp
-!/.gitignore
-node_modules
-bower_components
-test
