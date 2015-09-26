@@ -1,5 +1,5 @@
 {
-  "name": "photosphere",
+  "name": "angular-photosphere-directive",
   "version": "0.5.0",
   "repository": "https://github.com/Gullfaxi171/angular-photosphere-directive",
   "main": "photosphere.min.js",
