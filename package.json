@@ -1,0 +1,12 @@
+{
+  "name": "angular-photosphere-directive",
+  "version": "0.5.0",
+  "dependencies": {},
+  "repository": "https://github.com/Gullfaxi171/angular-photosphere-directive",
+  "devDependencies": {
+    "broccoli": "^0.16.8",
+    "broccoli-concat": "0.0.13",
+    "broccoli-merge-trees": "^0.2.3",
+    "broccoli-uglify-js": "^0.1.3"
+  }
+}

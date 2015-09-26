@@ -1,0 +1,10 @@
+{
+  "name": "photosphere",
+  "version": "0.5.0",
+  "repository": "https://github.com/Gullfaxi171/angular-photosphere-directive",
+  "dependencies": {
+    "angular": "~1.4.6",
+    "angular-material": "~0.11.1",
+    "three.js": "~0.71.0"
+  }
+}

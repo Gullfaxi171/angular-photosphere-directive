@@ -4,7 +4,7 @@
 
 Import Angular, three.js and photosphere.min.js
 ```html
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/threejs/r69/three.min.js"></script>
 <script src="libs/photosphere.min.js"></script>
 ```
@@ -35,6 +35,16 @@ angular.module('myApp', ['photosphere']);
 * Big resolutions values can have effects on the performances.
 * Don't use too heavy pictures (like 10 Mo), people don't like to wait...
 * CORS are enabled, if you need to host your photopsheres on Google Drive you must follow this tutorial : https://support.google.com/drive/answer/2881970?hl=en
+
+##Build
+
+If you want to modify and re-build the project, you will have to convert the ts file (with tsc, atom-typescript, Visual Studio, whatever you want) and then to run :
+
+```javascript
+npm i -g broccoli-cli
+npm install
+rm -r -f dist && broccoli build dist
+```
 
 ##Coming Soon
 * Async load of the pictures
