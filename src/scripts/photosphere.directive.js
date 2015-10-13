@@ -13,6 +13,13 @@ var ngPhotosphere;
         Control[Control["none"] = 3] = "none";
     })(ngPhotosphere.Control || (ngPhotosphere.Control = {}));
     var Control = ngPhotosphere.Control;
+    var icon = (function () {
+        function icon() {
+        }
+        icon.expand = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABlElEQVRYR92XzVHDMBCF306ce+iADoAKICVQAXIFwME5OTOeiU/2gVABSgfpAJcQOqADcsfMMnYwSWzJP7FkZvDRlvZ9+7xaSQQDj/CjJYjuO4difqbOkxQTxDzmU+P8F4AoAej6FBfMOBA8TZCml0oAwhLAhQ7OCIAuuPBjCcJdnTPWANqIZ2BWALTijFXZEeMA+szZBdM7CK+Hv8QoQJ24XMyk8OMbawBN4lnW1gDaiFsDEFkP+Eo/qkuN3cz2w/f2HJjHm+NmUxW35kAeOHfhc71rx2rx/bhUAjzZOUNro6vgz/aCU4SLOST8OADws5PxFs7YlcHjVhVUzCMB0AsYCRznVjeuCxBVDhOMqQy9pBzkV7z4wLyR4eyqi5hqbCuAingRaeSc9XWhEUArzljJ0BNWHbAtni9EXQ0MIa4FAPF5Xu3lx5DtR9tx9UjNMjNmCHG1A6qqspD5vhE1XSosijc7wLwhwoPSlNH4rW8PaAaoW+SMRIbe1Hwf6BBRLrzeu2m1DwwO0ONqLcOZsj465IBvQtTgKhhohhoAAAAASUVORK5CYII=";
+        return icon;
+    })();
+    ngPhotosphere.icon = icon;
     var params = (function () {
         function params(width, height, speed, resolution, controls) {
             var vm = this;
@@ -112,6 +119,7 @@ var ngPhotosphere;
             this.fullscreen = false;
             var vm = this;
             vm.id = Math.round(10000 * Math.random());
+            var expandLogo = icon.expand;
             vm.template = '<div ng-scope-element="' + vm.id + '"></div>';
             vm.fullscreen = false;
             var directive = {};
